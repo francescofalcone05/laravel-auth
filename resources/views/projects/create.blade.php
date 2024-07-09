@@ -38,4 +38,5 @@
         <!-- Aggiungi qui altri campi del form se necessario -->
         <button type="submit">Aggiungi progetto</button>
     </form>
+    <a href="/projects/index">Torna alla lista dei progetti</a>
 @endsection
