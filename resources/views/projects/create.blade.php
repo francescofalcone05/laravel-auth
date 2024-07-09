@@ -5,32 +5,32 @@
     <form action="{{ route('projects.store') }}" method="POST">
         @csrf
         <div>
-            <label for="titolo">Titolo:</label>
-            <input type="text" id="titolo" name="titolo" value="{{ old('titolo') }}">
-            @error('titolo')
+            <label for="name_project">Titolo:</label>
+            <input type="text" id="name_project" name="name_project" value="{{ old('name_project') }}">
+            @error('name_project')
                 <div>{{ $message }}</div>
             @enderror
         </div>
 
         <div>
-            <label for="gruppo">Gruppo:</label>
-            <input type="checkbox" id="gruppo" name="gruppo" value="{{ old('gruppo') }}">
-            @error('gruppo')
+            <label for="group">Gruppo:</label>
+            <input type="checkbox" id="group" name="group" value="{{ old('group') }}">
+            @error('group')
                 <div>{{ $message }}</div>
             @enderror
         </div>
 
         <div>
-            <label for="descrizione">Descrizione</label>
-            <input type="text" id="descrizione" name="descrizione" value="{{ old('descrizione') }}">
-            @error('descrizione')
+            <label for="description">Descrizione</label>
+            <input type="text" id="description" name="description" value="{{ old('description') }}">
+            @error('description')
                 <div>{{ $message }}</div>
             @enderror
         </div>
 
         <div>
             <label for="date">Data:</label>
-            <input type="text" id="date" name="date" value="{{ old('date') }}">
+            <input type="date" id="date" name="date" value="{{ old('date') }}">
             @error('date')
                 <div>{{ $message }}</div>
             @enderror
