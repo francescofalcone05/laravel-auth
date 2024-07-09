@@ -14,21 +14,21 @@ class ProjectTableSeeder extends Seeder
         $newProject = new Project();
         $newProject->name_project = 'Laravel 1';
         $newProject->description = 'Il progetto Laravel 1 é stato fatto da luca, nichola e ciccio.';
-        $newProject->author = 'Boolean';
+        $newProject->group = true;
+        $newProject->date = now();
+        $newProject->save();
+
+        $newProject = new Project();
+        $newProject->name_project = 'Laravel 2';
+        $newProject->description = 'Il progetto Laravel 1 é stato fatto da luca.';
+        $newProject->group = false;
         $newProject->date = now();
         $newProject->save();
 
         $newProject = new Project();
         $newProject->name_project = 'Laravel 2';
         $newProject->description = 'Il progetto Laravel 1 é stato fatto da luca, nichola e ciccio.';
-        $newProject->author = 'Boolean';
-        $newProject->date = now();
-        $newProject->save();
-
-        $newProject = new Project();
-        $newProject->name_project = 'Laravel 2';
-        $newProject->description = 'Il progetto Laravel 1 é stato fatto da luca, nichola e ciccio.';
-        $newProject->author = 'Boolean';
+        $newProject->group = true;
         $newProject->date = now();
         $newProject->save();
     }
