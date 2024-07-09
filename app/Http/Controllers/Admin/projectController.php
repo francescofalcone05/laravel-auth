@@ -42,7 +42,8 @@ class projectController extends Controller
         $newProject->save();
 
         //RITORNO LA ROTTA
-        return redirect()->route('project.index');
+        // return redirect()->route('project.index');
+        return 'dati ricevuti';
     }
 
     /**
