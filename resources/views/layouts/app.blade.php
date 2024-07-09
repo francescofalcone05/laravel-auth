@@ -50,8 +50,8 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="/projects/index">
-								Index
+							<a class="nav-link" href="{{ route('projects.index') }}">
+								Project list
 							</a>
 						</li>
 
