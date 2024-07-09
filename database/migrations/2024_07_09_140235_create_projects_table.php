@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->char('name_project', 100);
             $table->text('description');
-            $table->boolean('group');
+            $table->boolean('group')->nullable();
             $table->date('date');
         });
     }

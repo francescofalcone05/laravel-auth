@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class projectController extends Controller
 {
@@ -26,7 +27,7 @@ class projectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -34,7 +35,21 @@ class projectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //PRENDO TUTTI I DATI
+        $data = $request->all();
+
+        //CREO L'OGGETTO
+        $newProject = new Project();
+
+        //POPOLO L'OGGETTO CREANDO L'ISTANZA
+        $newProject->fill($data);
+
+        //SALVO SUL DB
+        $newProject->save();
+
+        //RITORNO LA ROTTA
+        // return redirect()->route('project.index');
+        return 'dati ricevuti';
     }
 
     /**

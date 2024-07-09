@@ -37,4 +37,4 @@ Route::middleware(['auth'])
 require __DIR__ . '/auth.php';
 
 
-Route::resource('/project', projectController::class);
+Route::resource('/projects', projectController::class);
