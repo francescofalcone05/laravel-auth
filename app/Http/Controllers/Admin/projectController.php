@@ -35,7 +35,16 @@ class projectController extends Controller
     public function store(Request $request)
     {
         //PRENDO TUTTI I DATI
-        $data = $request->all();
+        // $data = $request->all();
+
+        // Qui abbiamo la validazione
+        $data = $request->validate([
+            "name_project" => "required|min:3|max:200",
+            "description" => "required|min:5|max:255",
+            "group" => "required|boolean",
+            "date" => "required|integer|min:1980|max:2099",
+        ]);
+
 
         //CREO L'OGGETTO
         $newProject = new Project();
@@ -48,15 +57,19 @@ class projectController extends Controller
 
         //RITORNO LA ROTTA
         // return redirect()->route('project.index');
-        return 'dati ricevuti';
+        return redirect()->route('projects.show', $newProject);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Project $project)
     {
-        //
+                $data = [
+            "project" => $project
+        ];
+
+        return view("project.show", $data);
     }
 
     /**

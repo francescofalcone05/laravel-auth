@@ -126,3 +126,21 @@ Adesso invece quella cartella andrà creata sotto "views/admin"
 ```bash
 /resources/views/admin/posts/*.blade.php
 ```
+
+
+
+CRUD - BASE
+index e relativa view
+show e relativa view
+create, relativa view, metodo store e validazione
+edit, relativa view, metodo update e validazione
+delete
+Richiamate le rotte del Resource Controller direttamente da web.php, senza autenticazione.
+Quindi localhost:8000/projects dovrebbe mostrarvi l'index, senza dover essere loggati.
+
+CRUD - AUTH
+Spostate tutte le rotte del controller di risorsa nel blocco dell'autenticazione.
+Quindi localhost:8000/admin/projects dovrebbe mostrarvi l'index, solo per chi è loggato.
+
+BONUS
+E se volessi stampare la lista dei progetti anche dalla vista Welcome?
