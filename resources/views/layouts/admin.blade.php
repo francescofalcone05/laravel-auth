@@ -45,6 +45,14 @@
 								</a>
 							</li>
 
+							@if (Route::currentRouteName() !== 'admin.projects.index')
+								<li class="nav-item">
+									<a class="nav-link" href="{{ route('admin.projects.index') }}">
+										Project list
+									</a>
+								</li>
+							@endif
+
 							<li class="nav-item">
 								<a class="nav-link text-white" href="{{ route('logout') }}"
 									onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

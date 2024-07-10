@@ -18,7 +18,7 @@ class projectController extends Controller
         $data = [
             'projects' => $projects
         ];
-        return view('projects.index', $data);
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -26,7 +26,7 @@ class projectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class projectController extends Controller
 
         //RITORNO LA ROTTA
         // return redirect()->route('project.index');
-        return redirect()->route('projects.show', $newProject);
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
@@ -69,7 +69,7 @@ class projectController extends Controller
             "project" => $project
         ];
 
-        return view("projects.show", $data);
+        return view("admin.projects.show", $data);
     }
 
     /**
@@ -81,7 +81,7 @@ class projectController extends Controller
             "project" => $project
         ];
 
-        return view("projects.edit", $data);
+        return view("admin.projects.edit", $data);
     }
 
     /**
@@ -105,7 +105,7 @@ class projectController extends Controller
         $project->update($data);
 
 
-        return redirect()->route('projects.show', $project->id);
+        return redirect()->route('admin.projects.show', $project->id);
     }
 
     /**

@@ -48,13 +48,6 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
 						</li>
-						@if (Route::currentRouteName() !== 'projects.index')
-							<li class="nav-item">
-								<a class="nav-link" href="{{ route('projects.index') }}">
-									Project list
-								</a>
-							</li>
-						@endif
 					</ul>
 
 					<!-- Right Side Of Navbar -->

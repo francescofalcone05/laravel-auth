@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController; //<---- Import del controller precedentemente creato!
 use App\Http\Controllers\Admin\projectController;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,12 @@ use App\Http\Controllers\Admin\projectController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $projects = Project::all();
+
+        $data = [
+            'projects' => $projects
+        ];
+    return view('welcome', $data);
 });
 
 Route::get('/about', function () {
@@ -32,9 +38,10 @@ Route::middleware(['auth'])
         // - il percorso "/" diventa "admin/"
         // - il nome della rotta ->name("dashboard") diventa ->name("admin.dashboard")
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('/projects', projectController::class);
     });
 
 require __DIR__ . '/auth.php';
 
 
-Route::resource('/projects', projectController::class);
+
