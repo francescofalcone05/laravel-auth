@@ -115,6 +115,6 @@ class projectController extends Controller
     {
         $project->delete();
 
-        return redirect()->route('project.index');
+        return redirect()->route('admin.projects.index');
     }
 }

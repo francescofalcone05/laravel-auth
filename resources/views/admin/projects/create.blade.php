@@ -2,7 +2,7 @@
 
 @section('content')
 	<h1>Aggiungi un nuovo progetto</h1>
-	<form action="{{ route('projects.store') }}" method="POST">
+	<form action="{{ route('admin.projects.store') }}" method="POST">
 		@csrf
 		<div>
 			<label for="name_project">Titolo:</label>
@@ -38,5 +38,5 @@
 		<!-- Aggiungi qui altri campi del form se necessario -->
 		<button type="submit">Aggiungi progetto</button>
 	</form>
-	<a href="/projects/index">Torna alla lista dei progetti</a>
+	<a href="{{ route('admin.projects.index') }}">Torna alla lista dei progetti</a>
 @endsection
