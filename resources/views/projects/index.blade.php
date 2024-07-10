@@ -11,6 +11,11 @@
 				<p>Progetto non svolto in gruppo</p>
 			@endif
 			<a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">more details</a>
+			<form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+				@method('DELETE')
+				@csrf
+				<button type="submit" class="btn btn-primary">Destroy</a>
+			</form>
 		@endforeach
 	</div>
 @endsection
