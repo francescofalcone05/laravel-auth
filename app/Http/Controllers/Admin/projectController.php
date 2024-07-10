@@ -65,7 +65,7 @@ class projectController extends Controller
      */
     public function show(Project $project)
     {
-                $data = [
+        $data = [
             "project" => $project
         ];
 
