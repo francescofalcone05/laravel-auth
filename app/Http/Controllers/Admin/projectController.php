@@ -92,11 +92,17 @@ class projectController extends Controller
         $data = $request->all();
 
 
-        $project->name_project = $data["name_project"];
-        $project->description = $data["description"];
-        $project->date = $data["date"];
-        $project->group = $data["group"];
-        $project->save();
+        // $project->name_project = $data["name_project"];
+        // $project->description = $data["description"];
+        // $project->date = $data["date"];
+        // $project->group = $data["group"];
+        // $project->save();
+
+
+        // $project->fill($data);
+        // $project->save();
+
+        $project->update($data);
 
 
         return redirect()->route('projects.show', $project->id);
