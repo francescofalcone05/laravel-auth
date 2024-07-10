@@ -69,7 +69,7 @@ class projectController extends Controller
             "project" => $project
         ];
 
-        return view("project.show", $data);
+        return view("projects.show", $data);
     }
 
     /**
