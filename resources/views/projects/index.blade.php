@@ -10,6 +10,7 @@
 			@else
 				<p>Progetto non svolto in gruppo</p>
 			@endif
+			<a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">more details</a>
 		@endforeach
 	</div>
 @endsection
