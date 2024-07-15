@@ -14,9 +14,17 @@
 			</div>
 
 			<div class="mt-1">
-				<label for="description">Descrizione</label>
+				<label for="description">Descrizione:</label>
 				<input style="width: 80%" type="text" id="description" name="description" value="{{ old('description') }}">
 				@error('description')
+					<div>{{ $message }}</div>
+				@enderror
+			</div>
+
+			<div class="mt-1">
+				<label for="description">Immagine:</label>
+				<input style="width: 80%" type="text" id="img" name="img" value="{{ old('img') }}">
+				@error('img')
 					<div>{{ $message }}</div>
 				@enderror
 			</div>

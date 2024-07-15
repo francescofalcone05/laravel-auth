@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="container">
-		<div class="row">
+		<div class="row mb-4">
 			<div class="col-12">
 				<h1>Modifica: {{ $project->name_project }}</h1>
 				@if ($errors->any())
@@ -28,6 +28,13 @@
 						<h3 class="form-label">Titolo</h3>
 						<input type="text" class="form-control" name="name_project" required value="{{ $project->name_project }}">
 						@error('name')
+							<div>{{ $message }}</div>
+						@enderror
+					</div>
+					<div class="mb-3">
+						<h3 class="form-label">Immagine</h3>
+						<input type="text" class="form-control" name="img" required value="{{ $project->img }}">
+						@error('img')
 							<div>{{ $message }}</div>
 						@enderror
 					</div>

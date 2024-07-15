@@ -4,7 +4,7 @@
 	<div style="width: 80%" class="mx-auto">
 
 		<div class="card mb-3">
-			<img src="..." class="card-img-top" alt="...">
+			<img src="{{ $project->img }}" class="card-img-top" alt="...">
 
 			<div class="card-body">
 
@@ -14,11 +14,9 @@
 					<p>Il progetto è stato fatto in gruppo</p>
 				@endif
 				<p class="card-text"><small class="text-body-secondary">{{ $project->type->name }}</small></p>
-				{{-- <p class="card-text"><small class="text-body-secondary">{{ $project->type }}</small></p>
-				<i class="{{ $project->type }}"></i> --}}
-
+				<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
 			</div>
 
 		</div>
-		<a href="/">Torna alla home</a>
+		<a href="{{ route('admin.projects.index') }}">Torna alla lista progetti</a>
 	@endsection
