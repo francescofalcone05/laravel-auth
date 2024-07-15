@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+
+class Type extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "name_project",
+        "name",
         "description",
-        "group",
-        "date",
-        "type_id"
+        "icon"
     ];
 
-    public function type()
+    //Dalle Type recupera i Projects collegati
+    public function projects()
     {
-        return $this->belongsTo(Type::class);
+        return $this->hasMany(Project::class);
     }
 }

@@ -46,16 +46,32 @@
 							</li>
 
 							@if (Route::currentRouteName() !== 'admin.projects.index')
-								<li class="nav-item">
-									<a class="nav-link" href="{{ route('admin.projects.index') }}">
-										Project list
+								<li class="nav-item ">
+									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
+										href="{{ route('admin.projects.index') }}">
+										<i class="fa-solid fa-bars fa-lg fa-fw me-1"></i>Project list
 									</a>
 								</li>
 							@endif
 
 							<li class="nav-item">
-								<a class="nav-link" href="{{ route('admin.projects.create') }}">
-									Create project
+								<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.create' ? 'bg-secondary' : '' }}"
+									href="{{ route('admin.projects.create') }}">
+									<i class="fa-solid fa-plus fa-lg fa-fw me-1"></i>Create project
+								</a>
+							</li>
+
+							<li class="nav-item ">
+								<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
+									href="{{ route('admin.types.index') }}">
+									<i class="fa-solid fa-bars fa-lg fa-fw me-1"></i>Types list
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.create' ? 'bg-secondary' : '' }}"
+									href="{{ route('admin.types.create') }}">
+									<i class="fa-solid fa-plus fa-lg fa-fw me-1"></i>Create type
 								</a>
 							</li>
 

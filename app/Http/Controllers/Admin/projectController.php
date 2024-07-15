@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class projectController extends Controller
@@ -42,7 +43,7 @@ class projectController extends Controller
             "name_project" => "required|min:3|max:200",
             "description" => "required|min:5|max:255",
             "group" => "required|boolean",
-            "date" => "required|integer|min:1980|max:2099",
+            "date" => "required|date",
         ]);
 
 
@@ -57,7 +58,7 @@ class projectController extends Controller
 
         //RITORNO LA ROTTA
         // return redirect()->route('project.index');
-        return redirect()->route('admin.projects.show', $newProject);
+        return redirect()->route('admin.projects.index', $newProject);
     }
 
     /**
@@ -65,8 +66,11 @@ class projectController extends Controller
      */
     public function show(Project $project)
     {
+
         $data = [
-            "project" => $project
+            "project" => $project,
+
+
         ];
 
         return view("admin.projects.show", $data);
@@ -77,8 +81,11 @@ class projectController extends Controller
      */
     public function edit(Project $project)
     {
+        $tipi = Type::all();
         $data = [
-            "project" => $project
+            "project" => $project,
+            "types" => $tipi
+
         ];
 
         return view("admin.projects.edit", $data);

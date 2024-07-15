@@ -1,21 +1,19 @@
 @extends('layouts.app')
 @section('content')
-	<div>
+	<div class="d-flex justify-content-center flex-wrap">
 		@foreach ($projects as $project)
-			<h1>Progetto: {{ $project->name_project }}</h1>
-			<p>Descrizione: {{ $project->description }}</p>
-			<p>Data pubblicazione: {{ $project->date }}</p>
-			@if ($project->group == true)
-				<p>Progetto svolto in gruppo</p>
-			@else
-				<p>Progetto non svolto in gruppo</p>
-			@endif
-			<a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">more details</a>
-			<form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
-				@method('DELETE')
-				@csrf
-				<button type="submit" class="btn btn-primary mt-1">Destroy</button>
-			</form>
+			<div class="card m-2 p-2 text-center" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Progetto: {{ $project->name_project }}</h5>
+					<p>Data pubblicazione: {{ $project->date }}</p>
+					<a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-primary">more details</a>
+					<form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+						@method('DELETE')
+						@csrf
+						<button type="submit" class="btn btn-danger mt-1">Destroy</button>
+					</form>
+				</div>
+			</div>
 		@endforeach
 	</div>
 @endsection

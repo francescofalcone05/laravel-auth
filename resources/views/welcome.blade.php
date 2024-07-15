@@ -1,15 +1,14 @@
 @extends('layouts.app')
 @section('content')
-	<div>
+	<div class="d-flex justify-content-center flex-wrap">
 		@foreach ($projects as $project)
-			<h1>Progetto: {{ $project->name_project }}</h1>
-			<p>Descrizione: {{ $project->description }}</p>
-			<p>Data pubblicazione: {{ $project->date }}</p>
-			@if ($project->group == true)
-				<p>Progetto svolto in gruppo</p>
-			@else
-				<p>Progetto non svolto in gruppo</p>
-			@endif
+			<div class="card m-2 p-2" style="width: 18rem;">
+				<div class="card-body">
+					<h5 class="card-title">Progetto: {{ $project->name_project }}</h5>
+					<p>Data pubblicazione: {{ $project->date }}</p>
+					</form>
+				</div>
+			</div>
 		@endforeach
 	</div>
 @endsection
