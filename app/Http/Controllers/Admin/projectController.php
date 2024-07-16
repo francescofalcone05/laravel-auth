@@ -27,7 +27,13 @@ class projectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+
+        $data = [
+            'types' => $types
+        ];
+
+        return view('admin.projects.create', $data);
     }
 
     /**
@@ -37,15 +43,16 @@ class projectController extends Controller
     {
         //PRENDO TUTTI I DATI
         // $data = $request->all();
-
         // Qui abbiamo la validazione
         $data = $request->validate([
             "name_project" => "required|min:3|max:200",
+            "img" => "required",
             "description" => "required|min:5|max:255",
-            "group" => "required|boolean",
-            "date" => "required|date",
+            "type_id" => "required",
+            // "date" => "required"
         ]);
-
+        //aggiungo data ad ogni nuovo progetto
+        $data['date'] = now();
 
         //CREO L'OGGETTO
         $newProject = new Project();

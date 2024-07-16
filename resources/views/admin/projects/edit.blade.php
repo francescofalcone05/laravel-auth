@@ -42,32 +42,24 @@
 						<h3 class="form-label">Descrizione</h3>
 						<textarea type="text" class="form-control" name="description" required>{{ $project->description }}</textarea>
 					</div>
-					<div class="mb-3">
-						<h3 class="form-label">Gruppo</h3>
 
-						{{-- Va messo il value altrimenti, essendo che richiede un booleano, non accetta il valore "si" perché stringa --}}
-						<input type="radio" name="group" value="1">
-						<label for="vehicle1"> Si</label><br>
-						<input type="radio" name="group" value="0">
-						<label for="vehicle2"> No</label><br>
-
-					</div>
 					<div class="mb-3">
 						<h3 class="form-label">Data</h3>
 						<input type="date" class="form-control" name="date" required value="{{ $project->date }}">
 					</div>
 					<div class="mb-3">
 						<h3 class="form-label">Type</h3>
-						<select name="name" id="">
+						<select name="type_id" id="">
 							@foreach ($types as $tipo)
-								@if ($tipo->id == $project->type->id)
+								{{-- @if ($tipo->id == $project->type->id)
 									<option value="{{ $tipo->id }}" selected>{{ $tipo->name }}</option>
 								@else
 									<option value="{{ $tipo->id }}">{{ $tipo->name }}</option>
-								@endif
+								@endif --}}
+								<option value="{{ $tipo->id }}" @selected(old('type_id', $project->type->id) == $tipo->id)>{{ $tipo->name }}</option>
 							@endforeach
 						</select>
-						@error('img_preview')
+						@error('img')
 							<div class="form-text text-danger">The Link Preview field is required.</div>
 						@enderror
 					</div>

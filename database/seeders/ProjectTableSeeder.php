@@ -28,7 +28,6 @@ class ProjectTableSeeder extends Seeder
                                     Messaggi: La finestra principale mostra i messaggi scambiati con il contatto selezionato. I messaggi sono visualizzati in bolle di testo.
                                     Campo di Input: In basso, c'è un campo di input per scrivere nuovi messaggi, accompagnato da un'icona di microfono per inviare messaggi vocali.";
         $newProject->img = '/img/Boolzap.png';
-        $newProject->group = false;
         $newProject->date = now();
         $newProject->save();
 
@@ -57,7 +56,20 @@ Potenziali Aggiunte
 - Filtri e Categorie: Filtri avanzati per cercare film per genere, anno, valutazione, ecc.
 - Funzioni Social: Opzioni per creare liste di preferiti, lasciare recensioni, e condividere contenuti con amici.";
         $newProject->img = '/img/Boolflix.png';
-        $newProject->group = false;
+        $newProject->date = now();
+        $newProject->save();
+
+        $newProject = new Project();
+        $newProject->type_id = '1';
+        $newProject->name_project = 'Autocar';
+        $newProject->description = "
+Questo è un sito web di vendita auto chiamato 'Autocar', creato in gruppo. Utilizza un design moderno e intuitivo per facilitare l'acquisto e la vendita di auto.
+Caratteristiche Principali:
+Interfaccia Pulita: Il sito presenta un'interfaccia pulita e professionale con un logo distintivo e un menu di navigazione semplice.
+Immagini di Alta Qualità: Utilizza immagini ad alta risoluzione di auto, enfatizzando l'aspetto visivo per attrarre gli utenti.
+Testi Promozionali: Include testi promozionali chiari e concisi che evidenziano i benefici di comprare e vendere auto sul sito.
+Navigazione Intuitiva: La navigazione è facile e intuitiva, con accesso rapido alle sezioni principali come Home, About Us, Vehicles, Dealers, Packages, Blog, e Contact.";
+        $newProject->img = '/img/Autocar.png';
         $newProject->date = now();
         $newProject->save();
     }

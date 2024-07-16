@@ -44,7 +44,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<!-- Left Side Of Navbar -->
-					@if (Route::currentRouteName() !== '/')
+					@if (Route::currentRouteName() !== 'views.welcome')
 						<ul class="navbar-nav me-auto">
 							<li class="nav-item">
 								<a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>

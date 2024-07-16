@@ -5,12 +5,12 @@
 		<h1>Aggiungi un nuovo type</h1>
 		<form action="{{ route('admin.types.store') }}" method="POST">
 			@csrf
-			<div class="my-3">
+			<div class="my-5">
 				<label for="name">Nome tipo</label>
 				<input type="text" name="name" value="{{ old('name') }}">
 			</div>
 
-			<div class="my-3">
+			<div class="my-5">
 				<label for="description">Descrizione</label>
 				<input style="width: 80%" type="text" id="description" name="description" value="{{ old('description') }}">
 				@error('description')
@@ -18,8 +18,8 @@
 				@enderror
 			</div>
 
-			<div class="my-3">
-				<label for="description">Icon</label>
+			<div class="my-5">
+				<label for="icon">Icon</label>
 				<input type="text" name="icon" required value="{{ old('icon') }}">
 			</div>
 

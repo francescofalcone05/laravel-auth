@@ -10,9 +10,6 @@
 
 				<h5 class="card-title">Progetto: {{ $project['name_project'] }}</h5>
 				<p class="card-text">Descrizione: {{ $project['description'] }}</p>
-				@if ($project->group == true)
-					<p>Il progetto è stato fatto in gruppo</p>
-				@endif
 				<p class="card-text"><small class="text-body-secondary">{{ $project->type->name }}</small></p>
 				<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
 			</div>
