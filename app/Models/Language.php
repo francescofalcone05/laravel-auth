@@ -13,4 +13,11 @@ class Language extends Model
         'name',
         'icon'
     ];
+
+
+    public function projects()
+    {
+
+        return $this->belongsToMany(Project::class);
+    }
 }

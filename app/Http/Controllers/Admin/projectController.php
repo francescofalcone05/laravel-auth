@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use App\Models\Project;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class projectController extends Controller
 {
@@ -28,9 +31,11 @@ class projectController extends Controller
     public function create()
     {
         $types = Type::all();
+        $languages = Language::all();
 
         $data = [
-            'types' => $types
+            'types' => $types,
+            'languages' => $languages
         ];
 
         return view('admin.projects.create', $data);
@@ -46,22 +51,33 @@ class projectController extends Controller
         // Qui abbiamo la validazione
         $data = $request->validate([
             "name_project" => "required|min:3|max:200",
-            "img" => "required",
+            "img" => "required|image",
             "description" => "required|min:5|max:255",
             "type_id" => "required",
+            "languages " => "array",
+            "languages.*" => "required|exists:languages,id",
             // "date" => "required"
         ]);
         //aggiungo data ad ogni nuovo progetto
         $data['date'] = now();
 
+        if ($request->has('img')) {
+
+            $img_path = Storage::put('img', $request['img']);
+            $data['img'] = $img_path;
+        }
         //CREO L'OGGETTO
         $newProject = new Project();
+
 
         //POPOLO L'OGGETTO CREANDO L'ISTANZA
         $newProject->fill($data);
 
+
         //SALVO SUL DB
         $newProject->save();
+        $newProject->languages()->sync($data['languages']);
+
 
         //RITORNO LA ROTTA
         // return redirect()->route('project.index');
@@ -89,9 +105,13 @@ class projectController extends Controller
     public function edit(Project $project)
     {
         $tipi = Type::all();
+        $languages = Language::all();
+        $projectLanguages = $project->languages->pluck('id')->toArray();
         $data = [
             "project" => $project,
-            "types" => $tipi
+            "types" => $tipi,
+            'languages' => $languages,
+            'projectLanguages' => $projectLanguages,
 
         ];
 
@@ -103,20 +123,35 @@ class projectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $data = $request->all();
 
 
-        // $project->name_project = $data["name_project"];
-        // $project->description = $data["description"];
-        // $project->date = $data["date"];
-        // $project->group = $data["group"];
-        // $project->save();
+        $data = $request->validate([
+            "name_project" => "required|min:3|max:200",
+            "img" => "required|image",
+            "description" => "required",
+            "type_id" => "required",
+            "languages " => "array",
+            "languages.*" => "required|exists:languages,id",
+            // "date" => "required"
+        ]);
 
 
-        // $project->fill($data);
-        // $project->save();
+        //aggiungo data ad ogni nuovo progetto
+        $data['date'] = now();
+        if ($request->has('img')) {
+
+            $img_path = Storage::put('img', $request['img']);
+            $data['img'] = $img_path;
+            if ($project->img && !Str::start($project->img, 'http')) {
+                // not null and not startingn with http
+                Storage::delete($project->img);
+            }
+            //dd($data['img']);
+        }
 
         $project->update($data);
+        $project->languages()->sync($data['languages']);
+
 
 
         return redirect()->route('admin.projects.show', $project->id);
@@ -126,7 +161,13 @@ class projectController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Project $project)
+
     {
+        if ($project->img && !Str::start($project->img, 'http')) {
+            // not null and not startingn with http
+            Storage::delete($project->img);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index');

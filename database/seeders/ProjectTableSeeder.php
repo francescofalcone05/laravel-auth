@@ -30,6 +30,8 @@ class ProjectTableSeeder extends Seeder
         $newProject->img = '/img/Boolzap.png';
         $newProject->date = now();
         $newProject->save();
+        $language = [1, 2, 3];
+        $newProject->languages()->sync($language);
 
         $newProject = new Project();
         $newProject->type_id = '3';
@@ -58,6 +60,10 @@ Potenziali Aggiunte
         $newProject->img = '/img/Boolflix.png';
         $newProject->date = now();
         $newProject->save();
+        $language = [1, 2, 3];
+        $newProject->languages()->sync($language);
+
+
 
         $newProject = new Project();
         $newProject->type_id = '1';
@@ -72,5 +78,7 @@ Navigazione Intuitiva: La navigazione è facile e intuitiva, con accesso rapido 
         $newProject->img = '/img/Autocar.png';
         $newProject->date = now();
         $newProject->save();
+        $language = [1, 2, 3];
+        $newProject->languages()->sync($language);
     }
 }

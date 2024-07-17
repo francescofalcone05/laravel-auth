@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="text-center">
+	<div class="p-4">
 		<h1>Aggiungi un nuovo progetto</h1>
-		<form action="{{ route('admin.projects.store') }}" method="POST">
+		<form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
 			@csrf
 			<div class="my-4">
 				<label for="name_project">Titolo:</label>
@@ -22,9 +22,27 @@
 			</div>
 
 			<div class="my-4">
-				<label for="img">Immagine:</label>
-				<input style="width: 80%" type="text" id="img" name="img" value="{{ old('img') }}">
+
+				<label for="img" class="form-label">Immagine:</label>
+				<input type="file" class="form-control" name="img" id="img" placeholder="" aria-describedby="imgHelper"
+					style="width:70%" />
+				<div id="imgHelper" class="form-text">Upload an image for the curret project</div>
 				@error('img')
+					<div class="form-text text-danger">{{ $message }}</div>
+				@enderror
+
+			</div>
+
+			<div class="my-4">
+				@foreach ($languages as $language)
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="{{ $language->id }}" id="language" name="languages[]">
+						<label class="form-check-label" for="language">
+							{{ $language->name }}
+						</label>
+					</div>
+				@endforeach
+				@error('languages')
 					<div>{{ $message }}</div>
 				@enderror
 			</div>

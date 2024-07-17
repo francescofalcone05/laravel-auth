@@ -76,6 +76,21 @@
 								</a>
 							</li>
 
+							<li class="nav-item ">
+								<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.languages.index' ? 'bg-secondary' : '' }}"
+									href="{{ route('admin.languages.index') }}">
+									<i class="fa-solid fa-bars fa-lg fa-fw me-1"></i>Languages list
+								</a>
+							</li>
+
+							<li class="nav-item">
+								<a
+									class="nav-link text-white {{ Route::currentRouteName() == 'admin.languages.create' ? 'bg-secondary' : '' }}"
+									href="{{ route('admin.languages.create') }}">
+									<i class="fa-solid fa-plus fa-lg fa-fw me-1"></i>Create language
+								</a>
+							</li>
+
 							<li class="nav-item">
 								<a class="nav-link text-white" href="{{ route('logout') }}"
 									onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

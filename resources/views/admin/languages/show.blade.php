@@ -7,8 +7,8 @@
 
 			<div class="card-body">
 				<h5 class="card-title">{{ $language->name }}</h5>
-				<a href="{{ route('admin.languages.edit', $type->id) }}" class="btn btn-primary">Edit</a>
-				<form action="{{ route('admin.languages.destroy', $type->id) }}" method="POST">
+				<a href="{{ route('admin.languages.edit', $language->id) }}" class="btn btn-primary">Edit</a>
+				<form action="{{ route('admin.languages.destroy', $language->id) }}" method="POST">
 					@method('DELETE')
 					@csrf
 					<button type="submit" class="btn btn-danger mt-1">Destroy</button>
