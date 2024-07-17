@@ -142,7 +142,7 @@ class projectController extends Controller
 
             $img_path = Storage::put('img', $request['img']);
             $data['img'] = $img_path;
-            if ($project->img && !Str::start($project->img, 'http')) {
+            if ($project->img && !Str::startsWith($project->img, 'http')) {
                 // not null and not startingn with http
                 Storage::delete($project->img);
             }
@@ -163,7 +163,7 @@ class projectController extends Controller
     public function destroy(Project $project)
 
     {
-        if ($project->img && !Str::start($project->img, 'http')) {
+        if ($project->img && !Str::startsWith($project->img, 'http')) {
             // not null and not startingn with http
             Storage::delete($project->img);
         }

@@ -20,7 +20,8 @@
 						<li>{{ $language->name }}</li>
 					@endforeach
 				</ul>
-				<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary">Edit</a>
+				<a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-primary"> <i
+						class="fa-solid fa-pencil"></i></a>
 			</div>
 
 		</div>
