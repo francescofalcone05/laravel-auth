@@ -13,7 +13,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        $languages = Language::all();
+        return view('admin.languages.index', compact('languages'));
     }
 
     /**
@@ -37,7 +38,7 @@ class LanguageController extends Controller
      */
     public function show(Language $language)
     {
-        //
+        return view('admin.languages.show', $language);
     }
 
     /**
