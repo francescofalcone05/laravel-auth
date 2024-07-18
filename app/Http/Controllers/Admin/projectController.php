@@ -52,7 +52,7 @@ class projectController extends Controller
         $data = $request->validate([
             "name_project" => "required|min:3|max:200",
             "img" => "required|image",
-            "description" => "required|min:5|max:255",
+            "description" => "required",
             "type_id" => "required",
             "languages " => "array",
             "languages.*" => "required|exists:languages,id",

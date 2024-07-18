@@ -12,7 +12,7 @@ class ProjectController extends Controller
     {
         return response()->json([
             'status' => 'success',
-            'progetti' => Project::with(['languages', 'type'])->orderByDesc('id')->paginate()
+            'progetti' => Project::with(['languages', 'type'])->orderByDesc('id')->paginate(3)
             //languages e type del 'with()' li prendi dal metodo del modello Project
         ]);
     }
