@@ -16,4 +16,21 @@ class ProjectController extends Controller
             //languages e type del 'with()' li prendi dal metodo del modello Project
         ]);
     }
+
+    public function show($id)
+    {
+        $project = Project::with(['languages', 'type'])->where('id', $id)->first(); //con first al posto di get, ti da il primo dato non un array
+
+        if ($project) {
+            return response()->json([
+                'status' => 'success',
+                'progetto' => $project
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'not found',
+                'message' => 'project not found...'
+            ]);
+        }
+    }
 }
