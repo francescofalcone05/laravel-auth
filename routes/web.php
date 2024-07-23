@@ -34,8 +34,8 @@ Route::get('/about', function () {
 });
 
 Route::get('/mailable', function () {
-    $lead = ['name' => 'Fabio', 'email' => 'fabio@example.com', 'message' => 'lorem ipsum dolor', 'date' => '23/07/2024'];
-    // $lead = App\Models\Lead::first();
+    //$lead = ['name' => 'Fabio', 'email' => 'fabio@example.com', 'message' => 'lorem ipsum dolor', 'date' => '23/07/2024'];
+    $lead = App\Models\Lead::first();
 
     //dd($lead);
     return new App\Mail\NewContact($lead);

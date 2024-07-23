@@ -14,8 +14,9 @@ class LeadController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        dd($data);
         $data['date'] = now();
-
+        //dd($data);
 
         // validiamo i dati "a mano" per poter gestire la risposta
         $validator = Validator::make($data, [
