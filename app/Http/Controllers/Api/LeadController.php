@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\NewContact;
+use App\Mail\NewMarkdownContact;
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -14,7 +15,7 @@ class LeadController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        //dd($data);
         $data['date'] = now();
         //dd($data);
 
@@ -41,7 +42,7 @@ class LeadController extends Controller
         $new_lead->save();
 
         // inviamo la mail all'admin del sito, passando il nuovo oggetto Lead
-        Mail::to('info@boolpress.com')->send(new NewContact($new_lead));
+        Mail::to('info@boolpress.com')->send(new NewMarkdownContact($new_lead));
 
         return response()->json([
             'success' => true,
